@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribunal Eleitoral Municipal - Eleição de Prefeito</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TELA 1: LOGIN DO ELEITOR -->
+    <div id="login-container" class="celular-frame login-frame">
+        <!-- Bandeira e Brasão Cívico Municipal -->
+        <div class="bandeira-municipio">
+            <div class="faixa-bandeira verde"></div>
+            <div class="faixa-bandeira amarelo"></div>
+            <div class="faixa-bandeira azul"></div>
+        </div>
+
+        <div class="brasao-container">
+            <!-- Ícone de Brasão / Selo da Cidade -->
+            <svg class="brasao-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+                <path d="M12 7v10"/>
+                <path d="M8 11h8"/>
+            </svg>
+        </div>
+
+        <span class="badge-oficial">JUSTIÇA ELEITORAL MUNICIPAL</span>
+        <h2>Acesso do Eleitor</h2>
+        <p class="subtitulo-login">Digite seu e-mail cadastrado e senha para ter acesso à cédula de votação para Prefeito.</p>
+
+        <form id="login-form">
+            <input type="email" id="email" placeholder="E-mail do Eleitor" required>
+            <input type="password" id="senha" placeholder="Senha do Título" required>
+            <button type="submit" class="btn-acao btn-primario">Autenticar Eleitor</button>
+        </form>
+        <p id="login-erro" class="erro-msg"></p>
+    </div>
+
+    <!-- TELA 2: CÉDULA DE VOTAÇÃO -->
+    <main class="celular-frame" id="votacao-container" style="display: none;">
+        <header class="painel-header">
+            <div class="header-conteudo">
+                <div>
+                    <span class="badge-oficial">ELEIÇÃO MUNICIPAL</span>
+                    <h1>Cédula Eleitoral</h1>
+                </div>
+                <button id="btn-sair" class="btn-sair">Encerrar Sessão</button>
+            </div>
+            <div class="faixa-decorativa"></div>
+        </header>
+
+        <section class="candidatos-container">
+            
+            <!-- Candidato 1: Maria (Prefeita) -->
+            <article class="candidatos-coluna">
+                <div class="numero-partido">10</div>
+                <div class="foto-circular">
+                    <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/4314066-afro-mulher-pos-graduada-gratis-vetor.jpg" alt="Candidata Maria">
+                </div>
+
+                <div class="caixa-nome">
+                    <span class="bolinha-verde" id="dot-candidato_1"></span>
+                    <span class="cargo">Prefeita</span>
+                    <span class="nome">Maria Souza</span>
+                </div>
+
+                <div class="caixa-propostas">
+                    <span class="titulo-propostas">Plano de Governo</span>
+                    <ul>
+                        <li>Hospital Municipal 24h com centro de especialidades</li>
+                        <li>Tarifa zero no transporte público aos fins de semana</li>
+                        <li>Criação do Polo de Inovação e Tecnologia Municipal</li>
+                    </ul>
+                </div>
+
+                <button class="btn-votar" data-id="candidato_1">Confirmar Voto em Maria</button>
+            </article>
+
+            <!-- Candidato 2: Guilherme (Prefeito) -->
+            <article class="candidatos-coluna">
+                <div class="numero-partido">20</div>
+                <div class="foto-circular">
+                    <img src="https://static.vecteezy.com/ti/vetor-gratis/t2/18969941-feliz-estudante-de-pos-graduacao-afro-com-um-diploma-em-touca-e-roupao-de-formatura-jovem-que-se-formou-nos-estudos-ilustracaoial-plana-sobre-fundo-branco-vetor.jpg" alt="Candidato Guilherme">
+                </div>
+
+                <div class="caixa-nome">
+                    <span class="bolinha-verde" id="dot-candidato_2"></span>
+                    <span class="cargo">Prefeito</span>
+                    <span class="nome">Guilherme Dias</span>
+                </div>
+
+                <div class="caixa-propostas">
+                    <span class="titulo-propostas">Plano de Governo</span>
+                    <ul>
+                        <li>Universalização do saneamento e pavimentação asfáltica</li>
+                        <li>Programa Cidade Segura com câmeras integradas por IA</li>
+                        <li>Incentivo fiscal para geração de empregos locais</li>
+                    </ul>
+                </div>
+
+                <button class="btn-votar" data-id="candidato_2">Confirmar Voto em Guilherme</button>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- TELA 3: APURAÇÃO DOS RESULTADOS -->
+    <main class="celular-frame" id="resultado-container" style="display: none;">
+        <div class="bandeira-municipio">
+            <div class="faixa-bandeira verde"></div>
+            <div class="faixa-bandeira amarelo"></div>
+            <div class="faixa-bandeira azul"></div>
+        </div>
+
+        <span class="badge-oficial" style="margin-top: 10px;">APURAÇÃO OFICIAL</span>
+        <h2 style="font-size: 1.4rem; color: #0f172a; margin-top: 6px; margin-bottom: 16px;">Prefeito(a) Eleito(a)</h2>
+        
+        <div class="foto-circular foto-vencedor">
+            <img id="resultado-foto" src="" alt="Vencedor da Eleição">
+        </div>
+
+        <div class="card-vencedor-nome">
+            <small>Candidato Eleito</small>
+            <h3 id="resultado-nome">Nome</h3>
+        </div>
+
+        <div class="card-votos-totais">
+            Votos Válidos Recebidos:<br>
+            <span id="resultado-votos" class="numero-destaque">0</span>
+        </div>
+
+        <div class="painel-placar">
+            <strong>Boletim de Urna:</strong><br>
+            <span id="placar-geral"></span>
+        </div>
+
+        <button id="btn-sair-resultado" class="btn-sair" style="margin-top: 24px;">Sair do Painel Eleitoral</button>
+    </main>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

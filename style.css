@@ -1,0 +1,406 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+    background-color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+/* Moldura que simula a interface do terminal eleitoral */
+.celular-frame {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 460px;
+    border: 1px solid #cbd5e1;
+    border-radius: 24px;
+    padding: 24px 18px;
+    box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Bandeira decorativa superior */
+.bandeira-municipio {
+    display: flex;
+    width: 100%;
+    height: 6px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.faixa-bandeira {
+    flex: 1;
+}
+
+.faixa-bandeira.verde { background-color: #10b981; }
+.faixa-bandeira.amarelo { background-color: #f59e0b; }
+.faixa-bandeira.azul { background-color: #1d4ed8; }
+
+/* Ícone de Brasão */
+.brasao-container {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    border: 2px solid #bfdbfe;
+}
+
+.brasao-icone {
+    width: 36px;
+    height: 36px;
+    color: #1d4ed8;
+}
+
+.badge-oficial {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1e3a8a;
+    background: #dbeafe;
+    padding: 4px 10px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+/* Cabeçalho do Votacao */
+.painel-header {
+    margin-bottom: 20px;
+}
+
+.header-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.painel-header h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-top: 4px;
+}
+
+.faixa-decorativa {
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, #1d4ed8 0%, #10b981 100%);
+    margin-top: 12px;
+    border-radius: 2px;
+}
+
+/* Layout das colunas dos candidatos */
+.candidatos-container {
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+}
+
+.candidatos-coluna {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 12px 10px;
+    position: relative;
+}
+
+.numero-partido {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #1e293b;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+/* Foto circular com borda temática */
+.foto-circular {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    border: 3px solid #1d4ed8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 8px 0 10px;
+}
+
+.foto-circular img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.foto-vencedor {
+    width: 125px;
+    height: 125px;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 4px #fef3c7;
+}
+
+/* Caixa com dados do Candidato */
+.caixa-nome {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.caixa-nome .cargo {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.caixa-nome .nome {
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: #0f172a;
+}
+
+.bolinha-verde {
+    width: 10px;
+    height: 10px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: none;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+.bolinha-verde.ativa {
+    display: inline-block;
+}
+
+/* Propostas */
+.caixa-propostas {
+    width: 100%;
+    min-height: 180px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 8px;
+    background-color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.titulo-propostas {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #1d4ed8;
+    text-transform: uppercase;
+}
+
+.caixa-propostas ul {
+    padding-left: 14px;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: #334155;
+}
+
+.caixa-propostas li {
+    margin-bottom: 6px;
+}
+
+/* Botões de Votar (Estilo Urna Eletrônica / Confirma) */
+.btn-votar {
+    width: 100%;
+    background-color: #059669;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(5, 150, 105, 0.25);
+    transition: transform 0.1s ease, background-color 0.2s;
+}
+
+.btn-votar:hover {
+    background-color: #047857;
+    transform: translateY(-2px);
+}
+
+.btn-votar:active {
+    transform: scale(0.96);
+}
+
+/* Tela de Login */
+.login-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.subtitulo-login {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+#login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#login-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    background-color: #f8fafc;
+}
+
+#login-form input:focus {
+    border-color: #1d4ed8;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.btn-primario {
+    width: 100%;
+    background-color: #1d4ed8;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(29, 78, 216, 0.25);
+    transition: 0.2s;
+}
+
+.btn-primario:hover {
+    background-color: #1e40af;
+}
+
+.erro-msg {
+    color: #dc2626;
+    font-size: 0.8rem;
+    min-height: 20px;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.btn-sair {
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    transition: 0.2s;
+}
+
+.btn-sair:hover {
+    background: #fca5a5;
+}
+
+/* Painel de Resultados */
+#resultado-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-vencedor-nome {
+    width: 85%;
+    background: #ffffff;
+    border: 2px solid #0f172a;
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+}
+
+.card-vencedor-nome small {
+    font-size: 0.7rem;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.card-vencedor-nome h3 {
+    color: #0f172a;
+    font-size: 1.3rem;
+}
+
+.card-votos-totais {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e3a8a;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 16px;
+    width: 85%;
+}
+
+.numero-destaque {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1d4ed8;
+}
+
+.painel-placar {
+    width: 100%;
+    text-align: left;
+    background-color: #f1f5f9;
+    border-left: 4px solid #10b981;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #334155;
+}
+
+@media (max-width: 480px) {
+    .candidatos-container {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .caixa-propostas {
+        min-height: auto;
+    }
+}
